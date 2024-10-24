@@ -35,3 +35,4 @@ monitor_file() {
 }
 
 # Jalankan fungsi monitoring
+monitor_file
