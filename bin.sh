@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Definisikan lokasi file index.php
-INDEX_FILE="/home/shirinba/public_html.index.php"
+INDEX_FILE="/home/shirinba/public_html/index.php"
 
 # Definisikan lokasi folder backup
 BACKUP_FOLDER="/home/shirinba/php"
